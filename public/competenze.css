@@ -1,0 +1,89 @@
+/* ===== Competenze: rete neurale (schermo largo) ed elenco a gruppi ===== */
+
+/* --- la rete --- */
+/* le proporzioni (aspect-ratio) le imposta competenze.js: l'altezza dipende da quante competenze ci sono */
+.rete { position: relative; margin-top: 8px; }
+.rete svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+/* fili: linea di base grigia; i collegamenti tra gruppi sono tratteggiati */
+.filo-base { fill: none; stroke: var(--tenue); stroke-opacity: .35; stroke-width: 1.2; transition: stroke .3s, stroke-opacity .3s; }
+.filo-base.trasversale { stroke-dasharray: 4 6; }
+.filo-base.acceso { stroke: var(--rosso); stroke-opacity: .8; }
+
+/* impulso: un trattino rosso che scorre lungo il filo acceso.
+   pathLength="100" (in competenze.js) fa sì che 14 + 86 = tutto il filo. */
+.impulso { fill: none; stroke: var(--rosso); stroke-width: 3.5; stroke-linecap: round; stroke-dasharray: 14 86; opacity: 0; }
+.impulso.acceso { opacity: 1; animation: impulso-avanti 1.2s linear infinite; }
+.impulso.acceso.indietro { animation-name: impulso-indietro; }
+@keyframes impulso-avanti   { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+@keyframes impulso-indietro { from { stroke-dashoffset: 0; } to { stroke-dashoffset: 100; } }
+
+/* nodi: bottoni rotondi; --d è il diametro in unità del riquadro (1000 unità = 100% della larghezza) */
+.nodo {
+  position: absolute; transform: translate(-50%, -50%);
+  width: calc(var(--d) * 0.1%); aspect-ratio: 1; padding: 0; border-radius: 50%;
+  border: 2px solid var(--chiaro); background: var(--tenue);
+  color: inherit; font: 13px var(--mono); cursor: pointer;
+  transition: background-color .3s, border-color .3s;
+}
+.nodo.senza-livello { background: var(--scuro); }          /* vuoto: livello non indicato */
+.nodo.gruppo { background: var(--chiaro); }
+.nodo.centro { background: var(--rosso); border-color: var(--rosso); color: var(--chiaro); font: 700 16px var(--titoli); }
+
+.nodo.attivo { background: var(--rosso); border-color: var(--rosso); }
+.nodo.vicino { border-color: var(--rosso); }
+.nodo[aria-pressed="true"] { box-shadow: 0 0 0 4px rgba(200, 16, 46, .35); }
+.nodo:focus-visible { outline: 2px solid var(--rosso); outline-offset: 4px; }
+
+/* etichette: verso l'esterno per le competenze, sopra per i gruppi, dentro per il centro */
+.nodo span {
+  position: absolute; top: 50%; transform: translateY(-50%); white-space: nowrap; transition: opacity .3s;
+  /* alone del colore dello sfondo: i fili che passano dietro non disturbano la lettura */
+  text-shadow: 0 0 3px var(--scuro), 0 0 3px var(--scuro), 0 0 6px var(--scuro);
+}
+.nodo.lato-sinistra span { right: calc(100% + 10px); }
+.nodo.lato-destra span   { left: calc(100% + 10px); }
+.nodo.gruppo span { top: auto; bottom: calc(100% + 6px); left: 50%; right: auto; transform: translateX(-50%); font: 700 15px var(--titoli); }
+.nodo.centro span { position: static; transform: none; }
+.nodo span img { width: 18px; height: auto; vertical-align: -1px; margin-right: 6px; }
+/* loghi Devicon: sono un font, quindi si dimensionano con font-size */
+.icona { font-size: 16px; vertical-align: -2px; margin-right: 6px; text-shadow: none; }
+.competenze-elenco .icona { font-size: 20px; margin-right: 8px; }
+/* mentre un nodo è acceso, le etichette che non c'entrano si attenuano */
+.rete.in-uso .nodo:not(.attivo, .vicino, .centro) span { opacity: .4; }
+
+.rete-legenda { margin: 0 0 8px; font-size: 14px; }
+
+/* scheda dei dettagli sotto la rete; altezza minima per non far saltare la pagina */
+.rete-scheda { min-height: 120px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--linea); }
+.rete-scheda h3 { margin: 0 0 8px; }
+.rete-scheda p { margin: 4px 0; }
+.rete-livello meter { width: 120px; height: 8px; margin-right: 8px; }
+
+/* --- l'elenco a gruppi --- */
+.competenze-elenco { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 32px; }
+.competenze-elenco h3 { font-size: 22px; margin: 0 0 12px; }
+.competenze-elenco ul { list-style: none; margin: 0; padding: 0; }
+.competenze-elenco li { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 8px 0; border-bottom: 1px solid var(--linea); }
+.competenze-elenco .bandiera { width: 18px; height: auto; vertical-align: -1px; margin-right: 4px; }
+.competenze-elenco meter { width: 72px; height: 8px; }
+.competenze-elenco .livello { font: 12px var(--mono); color: var(--tenue); }
+.competenze-elenco .nota { flex-basis: 100%; font-size: 14px; color: var(--tenue); }
+
+/* schermo largo con JavaScript: si vede la rete, l'elenco resta solo per i lettori di schermo */
+@media (min-width: 801px) {
+  #competenze.con-rete .competenze-elenco {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip-path: inset(50%); white-space: nowrap;
+  }
+}
+/* sotto gli 800px: niente rete, solo l'elenco */
+@media (max-width: 800px) {
+  .rete, .rete-legenda, .rete-scheda { display: none; }
+}
+
+/* chi preferisce meno movimento: i fili si accendono, ma l'impulso non scorre */
+@media (prefers-reduced-motion: reduce) {
+  .impulso.acceso { animation: none; stroke-dasharray: none; stroke-width: 2.5; }
+  .nodo, .nodo span, .filo-base { transition: none; }
+}

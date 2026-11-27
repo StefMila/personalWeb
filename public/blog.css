@@ -1,0 +1,25 @@
+/* ===== Blog: riquadri nella pagina principale e pagine dei singoli blog ===== */
+
+/* --- riquadri nella sezione "Blog e passioni" --- */
+.blog-voci { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.blog-voci a {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  min-height: 96px; padding: 20px 24px; box-sizing: border-box;
+  border: 1px solid var(--linea); border-radius: 12px;
+  font: 500 22px/1.2 var(--titoli); text-decoration: none;
+  transition: border-color .3s, background-color .3s, color .3s;
+}
+/* la freccia si sposta un po' al passaggio del mouse */
+.blog-voci a::after { content: "→"; font-family: var(--mono); transition: transform .3s; }
+.blog-voci a:hover, .blog-voci a:focus-visible { border-color: var(--rosso); background: var(--rosso); color: var(--chiaro); }
+.blog-voci a:hover::after, .blog-voci a:focus-visible::after { transform: translateX(6px); }
+.blog-voci a:focus-visible { outline: 2px solid var(--rosso); outline-offset: 3px; }
+
+/* --- pagina di un blog --- */
+.pagina-blog { min-height: 100vh; box-sizing: border-box; }
+.pagina-blog .indietro { margin-bottom: 48px; }
+.pagina-blog .vuoto { padding: 32px 0; border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-voci a, .blog-voci a::after { transition: none; }
+}

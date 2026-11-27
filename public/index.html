@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Il mio sito</title>
+    <!-- Icone dei linguaggi (Devicon) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="timeline.css">
+    <link rel="stylesheet" href="menu.css">
+    <script src="menu.js" defer></script>
+    <script src="chi-sono.js" defer></script>
+    <script src="tema.js" defer></script>
+    <script src="percorso.js" defer></script>
+    <link rel="stylesheet" href="competenze.css">
+    <script src="competenze.js" defer></script>
+    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="richiesta-cv.css">
+    <script src="richiesta-cv.js" defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+
+
+<body>
+    <nav class="menu">
+    <div class="voci">
+        <a href="#chi-sono">Chi sono</a>
+        <a href="#esperienze">Esperienze</a>
+        <a href="#competenze">Competenze</a>
+        <a href="#blog">Blog</a>
+        <a href="#estero">Estero</a>
+        <a href="#cvEcontatti">CV e Contatti</a>
+    </div>
+    <div class="lingue" aria-hidden="true"><span class="scelta">IT</span><span>EN</span></div>
+</nav>
+    
+    <section class="intestazione" data-theme="dark">
+    <div>
+        <h1>Stefania <span class="contorno">Milani</span></h1>
+        <p class="intro">Studentessa di Informatica con tante passioni ed un passato interessante.</p>
+        <p class="tenue">Impiegata commerciale, amministrativa specializzata in spedizioni internazionali. A 32 anni lascio il
+            lavoro e inizio un percorso universitario presso la facoltà di ingegneria informatica di Trento. Ma non solo... </p>
+    </div>
+    <img class="foto" src="foto.jpg" alt="Foto di Stefania Milani" width="380">
+</section>
+    <section id="chi-sono" data-theme="light">
+  <!-- il ritratto viene prima del testo così può "galleggiare" a destra e il testo gli scorre accanto -->
+  <div class="filo">
+    <div class="ritratto">
+      <div class="disegno">
+        <img src="profilo.jpg" alt="Profilo di donna disegnato con una sola linea">
+      </div>
+      <button type="button" class="a-destra" data-nodo="germania" style="left:71.7%; top:84.3%; --ritardo:0.20s"><span>Germania</span></button>
+      <button type="button" class="sotto" data-nodo="amministrazione" style="left:31.7%; top:66.2%; --ritardo:0.45s"><span>Amministrazione e contabilità</span></button>
+      <button type="button" class="a-sinistra" data-nodo="pubblico" style="left:22.0%; top:31.6%; --ritardo:0.70s"><span>Relazioni umane </span></button>
+      <button type="button" class="a-destra" data-nodo="danza/cuba" style="left:26.0%; top:1.2%; --ritardo:0.95s"><span>Danza/Cuba</span></button>
+      <button type="button" class="a-destra" data-nodo="fotografia" style="left:40.8%; top:30.7%; --ritardo:1.45s"><span>Fotografia</span></button>
+      <button type="button" class="a-destra" data-nodo="software" style="left:46.7%; top:43.4%; --ritardo:1.70s"><span>Software</span></button>
+      <button type="button" class="a-destra" data-nodo="svizzera" style="left:38.2%; top:55.5%; --ritardo:1.95s"><span>Svizzera</span></button>
+      <button type="button" class="sopra" data-nodo="ai" style="left:88.0%; top:66.1%; --ritardo:2.20s"><span>AI e innovazione</span></button>
+    </div>
+  </div>
+
+  <div class="cs-testo">
+    <h2>Chi sono</h2>
+    <p class="intro">Mi chiamo Stefania, ho <span id="eta"></span> anni e sono una studentessa magistrale di Informatica. Questo è il mio spazio, dove convivono le tante anime del mio percorso: lavoro, studio e passioni.</p>
+    <p>Il mio motto: <em>"Se non lo so, lo imparo!"</em></p>
+    <details id="storia">
+      <summary>La mia storia</summary>
+      <p data-nodi="germania">Ho frequentato le elementari a Monaco di Baviera. Ero piccola, ma quell'esperienza mi ha lasciato una forma mentis non convenzionale e uno sguardo aperto sul mondo. Sono poi cresciuta nel ristorante dei miei genitori dove, lavorando fin da giovanissima, ho imparato presto il significato di rispetto e sacrificio.</p>
+      <p data-nodi="amministrazione pubblico">Gli studi superiori mi hanno avvicinata all'amministrazione, dove ho ritrovato una parte importante di me: il rigore, la precisione e il piacere del metodo. Il commerciale e il contatto con il pubblico, invece, sono da sempre il mio terreno naturale.</p>
+      <p data-nodi="">Quando inizio qualcosa, non mi limito mai al "compitino": amo ottimizzare i processi, cercare soluzioni innovative e condividere ciò che imparo.</p>
+      <p data-nodi="danza/cuba fotografia">Ormai si sarà capito: sono una persona ambiziosa, non solo nel lavoro, ma anche nella vita. A 14 anni ho iniziato a ballare, fino a entrare in un'importante compagnia di Verona. Proprio dal desiderio di trasmettere ciò che sapevo è nata la decisione di aprire una scuola tutta mia. Lungo la strada ho studiato comunicazione, fotografia, linguaggio del corpo, didattica e coaching, creando un metodo personale che unisce tecnica, cultura del ballo e crescita individuale. Lì ho scoperto quanto mi piaccia insegnare e, a detta di molti, pare che io sia anche portata.</p>
+      <p data-nodi="software ai">Poi sono arrivati i conti con la gestione quotidiana di una scuola e con il costo dei software gestionali per le piccole realtà. Da lì la spinta a imparare a costruirmi gli strumenti da sola e a scoprire cosa si nasconde dietro le app di tutti i giorni. Un percorso che oggi approfondisco con la <em>laurea magistrale in Informatica</em>.</p>
+
+<p data-nodi="svizzera">È un percorso che mi ha messa davvero alla prova, con moltissime sfide da superare, ma che mi ha anche aperto a mille opportunità ed esperienze indimenticabili. Mi ha fatto scoprire posti che resteranno per sempre nel mio cuore, come è successo durante l'Erasmus in Svizzera.</p>
+      <p data-nodi="">Oggi mi sento una persona costante ma in continua evoluzione, mossa dal puro piacere di sapere. Sono dinamica e pianifico con cura, ma resto sempre pronta a cambiare rotta e a scoprire qualcosa di inaspettato.</p>
+    </details>
+  </div>
+</section>
+<section id="esperienze" data-theme="dark">
+    <h2>Esperienze</h2>
+
+    <!-- legenda: lavoro o studio -->
+    <p class="legenda">
+        <span class="lavoro">Lavoro</span>
+        <span class="studio">Studio</span>
+    </p>
+<ol class="elenco esperienze timeline">
+    <li class="studio">
+
+        <p class="etichetta">09/2023 – oggi</p>
+        <h3>Università di Trento</h3>
+        <p class="tenue">Trento, TN, Italia</p>
+
+        <details>
+            <summary>11/2026 – oggi · Laurea magistrale in Informatica</summary>
+            <ul>
+                <li>[temi o corsi che stai seguendo]</li>
+            </ul>
+        </details>
+
+        <details>
+            <summary>09/2023 – 11/2026 · Laurea triennale in Ingegneria Informatica, delle Comunicazioni ed Elettronica</summary>
+            <ul>
+                <li>Linguaggi: C, C++ e Java</li>
+                <li>Sistemi operativi: Windows e Linux</li>
+                <li>Erasmus di 6 mesi alla ZHAW, Svizzera (2025)</li>
+            </ul>
+        </details>
+    </li>
+
+    
+    <li class="studio">
+        
+        <p class="etichetta">11/2022</p>
+        <h3>Comunicazione persuasiva, comunicazione efficace e team building</h3>
+        <p class="tenue">Corso di aggiornamento online</p>
+    </li>
+
+     <li class="studio">
+        
+        <p class="etichetta">05/2022 - 06/2022</p>
+        <h3>Corso di inglese</h3>
+        <p class="tenue">Kaplan International, New York</p>
+    </li>
+
+    <li class="lavoro">
+        <p class="etichetta">08/2013 – 09/2022</p>
+        <h3>Seitron Spa</h3>
+        <p class="tenue">Mussolente (VI), Italia · Termoidraulica e termoregolazione</p>
+
+       <details>
+    <summary>07/2020 – 09/2022 · Acquisti, Logistica e Spedizioni</summary>
+    <ul>
+        <li>Gestione delle spedizioni Italia ed estero e di tutta la documentazione (DDT, fatture, packing list, Dual Use, batterie al litio)</li>
+        <li>Controllo delle bollette doganali export, origine preferenziale e certificazione SASO</li>
+        <li>Gestione delle spedizioni di materiale per le fiere</li>
+        <li>Gestione delle lavorazioni conto terzi e dei relativi DDT</li>
+        <li>Registrazione degli arrivi e carico a gestionale</li>
+        <li>Gestione degli scarti delle macchine SMD</li>
+        <li>Definizione dei requisiti per il nuovo gestionale spedizioni e coordinamento con il fornitore</li>
+        
+    </ul>
+</details>
+
+<details>
+    <summary>01/2017 – 06/2020 · Back Office Commerciale Estero e Spedizioni</summary>
+    <ul>
+        <li>Inserimento degli ordini Italia ed estero</li>
+        <li>Redazione delle offerte per i clienti esteri</li>
+        <li>Fatturazione, con specializzazione sull'estero</li>
+        <li>Gestione delle spedizioni verso Amazon tramite Amazon Vendor Central, inclusa la creazione degli ASN</li>
+        <li>Approfondimento sull'origine delle merci: dichiarazioni a lungo termine dei fornitori, ATR, portale REX, delega per EUR1</li>
+        <details>
+            <summary>Corsi di aggiornamento Centro Api Servizi Società Benefit:</summary>
+            <ul>
+                <li>Corso di aggiornamento (03/2017): estero, IVA e triangolazioni</li>
+                <li>Corso di aggiornamento (02/2018): fatturazione elettronica e novità IVA</li>
+                <li>Corso di aggiornamento (03/2018): come prepararsi alla Brexit</li>
+            </ul>
+        </details>
+    </ul>
+</details>
+
+<details>
+    <summary>08/2013 – 01/2017 · Back Office Post-vendita e Commerciale</summary>
+    <ul>
+        <li>Gestione del post-vendita e preparazione dei preventivi di riparazione</li>
+        <li>Redazione delle offerte per i clienti italiani</li>
+        <li>Corrispondenza con i clienti esteri, recupero crediti e solleciti</li>
+        <li>Gestione delle giacenze, dei buoni di prelievo e dei blocchi di spedizione</li>
+        <li>Presentazioni Intrastat e black list</li>
+        <li>Gestione e aggiornamento dei listini clienti</li>
+        <li>Tenuta del registro dei beni movimentati in ambito intra-UE a titolo non traslativo</li>
+    </ul>
+</details>
+
+<p class="tenue"><em>Alcune attività, come le spedizioni, mi hanno accompagnata per tutto il rapporto di lavoro. Non le ho ripetute per mettere in luce l'evoluzione: dal post-vendita all'ambito commerciale e amministrativo, fino ad acquisti e logistica.</em></p>
+</li>
+
+    <li class="lavoro">
+        <p class="etichetta">08/2012 – 12/2012</p>
+        <h3>Beton Tool Company Srl</h3>
+        <p class="tenue">Rossano Veneto (VI), Italia · Edilizia</p>
+
+        <details>
+            <summary>Amministrativa e Commerciale</summary>
+            <ul>
+                <li>Gestione delle spedizioni verso Paesi UE ed extra UE</li>
+                <li>Gestione del materiale promozionale per le fiere di settore</li>
+            </ul>
+        </details>
+    </li>
+
+    <li class="lavoro">
+        <p class="etichetta">01/2010 – 07/2012</p>
+        <h3>Quake Ricami Srl</h3>
+        <p class="tenue">Rossano Veneto (VI), Italia · Tessile e abbigliamento</p>
+
+        <details>
+            <summary>Amministrativa e Contabilità</summary>
+            <ul>
+                <li>Registrazioni contabili in partita doppia</li>
+                <li>Gestione dei pagamenti (RiBa e bonifici), dello scadenziario e delle partite aperte</li>
+                <li>Recupero crediti e supporto nella gestione delle pratiche legali</li>
+                <li>Gestione delle presenze e delle timbrature del personale</li>
+                <li>Predisposizione dei bilanci infrannuali e annuali in collaborazione con il commercialista</li>
+                <li>Gestione delle spedizioni, dei DDT e degli imballaggi</li>
+                <li>Gestione degli ordini di clienti e fornitori e dei listini fornitori</li>
+                <li>Gestione del centralino e ricerca di nuovi clienti</li>
+            </ul>
+        </details>
+    </li>
+
+    <li class="studio">
+        <p class="etichetta">09/2004 – 07/2009</p>
+        <h3>Diploma di Perito Aziendale e Corrispondente in Lingue Estere</h3>
+        <p class="tenue">I.I.S. L. Einaudi, Bassano del Grappa, Italia</p>
+
+        <details>
+            <summary>Competenze linguistiche</summary>
+            <ul>
+                <li>Inglese: B2</li>
+                <li>Spagnolo: A2</li>
+                <li>Tedesco: B2 (certificato)</li>
+            </ul>
+            </details>
+            <details>
+            <summary>Competenze lavorative</summary>
+            <ul>
+                <li>Lingue e comunicazione aziendale</li>
+                <li>Economia e commercio internazionale</li>
+                <li>Amministrazione e contabilità</li>
+                <li>Diritto ed economia</li>
+            </ul>
+        </details>
+    </li>
+
+    <li class="studio">
+        <p class="etichetta">09/1995 – 07/2001</p>
+        <h3>Scuole elementari</h3>
+        <p class="tenue">Volksschule München, Germania</p>
+        <details>
+            <summary>Competenze linguistiche</summary>
+            <ul>
+                <li>Tedesco: L2 </li>
+            </ul>
+        </details>
+    </li>
+</ol>
+</section>
+<section id="competenze" data-theme="dark">
+    <h2>Competenze</h2>
+    <!-- La rete viene disegnata da competenze.js usando i dati scritti lì.
+         Questo elenco serve a chi non ha JavaScript, ai lettori di schermo e al telefono:
+         competenze.js lo rigenera dagli stessi dati. Se cambi i dati in competenze.js,
+         aggiorna anche questa copia (altrimenti chi non ha JavaScript vede quella vecchia). -->
+    <div class="competenze-elenco">
+    <div class="gruppo-elenco">
+      <h3>Informatica</h3>
+      <ul>
+        <li><span class="nome"><i class="icona devicon-html5-plain colored" aria-hidden="true"></i>HTML</span><meter min="0" max="6" value="2" aria-hidden="true"></meter><span class="livello">Livello 2 su 6</span><span class="nota">2 progetti</span></li>
+        <li><span class="nome"><i class="icona devicon-css3-plain colored" aria-hidden="true"></i>CSS</span><meter min="0" max="6" value="2" aria-hidden="true"></meter><span class="livello">Livello 2 su 6</span><span class="nota">2 progetti</span></li>
+        <li><span class="nome"><i class="icona devicon-javascript-plain colored" aria-hidden="true"></i>JavaScript</span><meter min="0" max="6" value="3" aria-hidden="true"></meter><span class="livello">Livello 3 su 6</span><span class="nota">2 progetti</span></li>
+        <li><span class="nome"><i class="icona devicon-python-plain colored" aria-hidden="true"></i>Python</span><meter min="0" max="6" value="2" aria-hidden="true"></meter><span class="livello">Livello 2 su 6</span><span class="nota">Laboratori universitari di ML e AI</span></li>
+        <li><span class="nome"><i class="icona devicon-java-plain colored" aria-hidden="true"></i>Java</span><meter min="0" max="6" value="4" aria-hidden="true"></meter><span class="livello">Livello 4 su 6</span><span class="nota">1 esame universitario</span></li>
+        <li><span class="nome"><i class="icona devicon-cplusplus-plain colored" aria-hidden="true"></i>C++</span><meter min="0" max="6" value="4" aria-hidden="true"></meter><span class="livello">Livello 4 su 6</span><span class="nota">2 esami universitari</span></li>
+        <li><span class="nome"><i class="icona devicon-mysql-plain" aria-hidden="true"></i>SQL</span><meter min="0" max="6" value="3" aria-hidden="true"></meter><span class="livello">Livello 3 su 6</span><span class="nota">1 esame universitario</span></li>
+        <li><span class="nome"><i class="icona devicon-github-original" aria-hidden="true"></i>GitHub</span><meter min="0" max="6" value="4" aria-hidden="true"></meter><span class="livello">Livello 4 su 6</span></li>
+        <li><span class="nome"><i class="icona devicon-c-plain colored" aria-hidden="true"></i>C</span></li>
+        <li><span class="nome"><i class="icona devicon-bash-plain" aria-hidden="true"></i>Bash</span></li>
+        <li><span class="nome"><i class="icona devicon-linux-plain" aria-hidden="true"></i>Linux</span></li>
+        <li><span class="nome"><i class="icona devicon-windows8-original colored" aria-hidden="true"></i>Windows</span></li>
+      </ul>
+    </div>
+    <div class="gruppo-elenco">
+      <h3>Lingue</h3>
+      <ul>
+        <li><span class="nome"><img class="bandiera" src="https://flagcdn.com/24x18/it.png" alt="" width="24" height="18">Italiano</span><meter min="0" max="6" value="6" aria-hidden="true"></meter><span class="livello">Livello 6 su 6</span><span class="nota">L1</span></li>
+        <li><span class="nome"><img class="bandiera" src="https://flagcdn.com/24x18/de.png" alt="" width="24" height="18">Tedesco</span><meter min="0" max="6" value="5" aria-hidden="true"></meter><span class="livello">Livello 5 su 6</span><span class="nota">L2</span></li>
+        <li><span class="nome"><img class="bandiera" src="https://flagcdn.com/24x18/gb.png" alt="" width="24" height="18">Inglese</span><meter min="0" max="6" value="4" aria-hidden="true"></meter><span class="livello">Livello 4 su 6</span><span class="nota">B2</span></li>
+        <li><span class="nome"><img class="bandiera" src="https://flagcdn.com/24x18/es.png" alt="" width="24" height="18">Spagnolo</span><meter min="0" max="6" value="4" aria-hidden="true"></meter><span class="livello">Livello 4 su 6</span><span class="nota">B2</span></li>
+      </ul>
+    </div>
+    <div class="gruppo-elenco">
+      <h3>Business</h3>
+      <ul>
+        <li><span class="nome">Spedizioni internazionali</span></li>
+        <li><span class="nome">Pratiche doganali</span></li>
+        <li><span class="nome">Origine delle merci</span></li>
+        <li><span class="nome">Intrastat</span></li>
+        <li><span class="nome">Contabilità</span></li>
+        <li><span class="nome">Offerte e ordini</span></li>
+      </ul>
+    </div>
+    <div class="gruppo-elenco">
+      <h3>Soft skills</h3>
+      <ul>
+        <li><span class="nome">Comunicazione</span></li>
+        <li><span class="nome">Precisione</span></li>
+        <li><span class="nome">Metodo</span></li>
+        <li><span class="nome">Curiosità</span></li>
+        <li><span class="nome">Flessibilità</span></li>
+        <li><span class="nome">Insegnamento</span></li>
+        <li><span class="nome">Collaborazione</span></li>
+        <li><span class="nome">Determinazione</span></li>
+        <li><span class="nome">Leadership</span></li>
+      </ul>
+    </div>
+    <div class="gruppo-elenco">
+      <h3>Danza</h3>
+      <ul>
+        <li><span class="nome">Didattica</span></li>
+        <li><span class="nome">Coaching</span></li>
+        <li><span class="nome">Gestione del gruppo</span></li>
+        <li><span class="nome">Progettazione dei corsi</span></li>
+        <li><span class="nome">Correzione e feedback</span></li>
+        <li><span class="nome">Presenza scenica</span></li>
+        <li><span class="nome">Improvvisazione</span></li>
+        <li><span class="nome">Lavoro in compagnia</span></li>
+        <li><span class="nome">Social Media Manager</span></li>
+      </ul>
+    </div>
+    <div class="gruppo-elenco">
+      <h3>Fotografia</h3>
+      <ul>
+        <li><span class="nome">Adobe Photoshop</span></li>
+        <li><span class="nome">Adobe Lightroom</span></li>
+        <li><span class="nome">Adobe Illustrator</span></li>
+      </ul>
+    </div>
+    </div>
+</section>
+
+<section id="blog" data-theme="dark">
+    <h2>Blog e passioni</h2>
+    <!-- ogni riquadro porta alla pagina del blog in public/blog/ -->
+    <ul class="blog-voci">
+        <li><a href="blog/universita.html">L'esperienza universitaria</a></li>
+        <li><a href="blog/danza.html">La danza</a></li>
+        <li><a href="blog/fotografia.html">Fotografia</a></li>
+        <li><a href="blog/libri.html">I libri</a></li>
+        <li><a href="blog/cucina.html">Cucinare</a></li>
+        <li><a href="blog/progetti.html">Progetti personali</a></li>
+    </ul>
+    </section>
+
+    <section id="estero" data-theme="light">
+    <h2>Esperienze all'estero</h2>
+    <ul class="elenco">
+        
+        <li>2025 – 6 mesi: Frequentato la ZHAW in Svizzera, Zurigo (Erasmus)</li>
+        <li>2022 – 1 mese: Frequentato la Kaplan International School a NYC</li>
+        <li>2007 – 3 mesi: Scambio linguistico in Germania, Offenburg</li>
+        <li>1995 – 6 anni: Frequentato le scuole dell'obbligo in Germania, Monaco di Baviera</li>
+    </ul>
+    </section>
+
+    <section id="cvEcontatti" data-theme="dark">
+    <h2>CV e Contatti</h2>
+    <!-- Richiesta del CV: arriva a Stefania, che la approva; chi chiede riceve un link temporaneo (vedi api/ e README) -->
+    <details class="richiesta-cv">
+        <summary>Richiedi il CV</summary>
+        <form action="/api/richiesta" method="post">
+            <p class="tenue">Compila il modulo: riceverai il CV via email appena approverò la richiesta.</p>
+            <label>Nome e cognome <input name="nome" required maxlength="100" autocomplete="name"></label>
+            <label>Email <input name="email" type="email" required maxlength="200" autocomplete="email"></label>
+            <label>Azienda <span class="tenue">(facoltativo)</span> <input name="azienda" maxlength="150" autocomplete="organization"></label>
+            <label>Motivo della richiesta <textarea name="motivo" required maxlength="1000" rows="4"></textarea></label>
+            <!-- campo trappola per i bot: nascosto alle persone -->
+            <label class="trappola" aria-hidden="true">Sito web <input name="sito_web" tabindex="-1" autocomplete="off"></label>
+            <!-- verifica anti-spam di Cloudflare: sostituisci la chiave con la tua "Site Key" (vedi README) -->
+            <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-language="it" data-theme="dark"></div>
+            <button class="pillola" type="submit">Invia la richiesta</button>
+            <p class="esito" role="status" aria-live="polite"></p>
+        </form>
+    </details>
+
+<div class="riquadri">
+
+
+   
+   
+
+    <fieldset>
+        <legend>Skills</legend>
+
+        <p class="etichetta">Informatica</p>
+        <ul class="tag">
+            <li>C</li><li>C++</li><li>Java</li><li>Python</li><li>SQL</li>
+            <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Bash</li></li><li>Linux</li><li>Windows</li>
+        </ul>
+
+        <p class="etichetta">Business</p>
+        <ul class="tag">
+            <li>Spedizioni internazionali</li><li>Pratiche doganali</li><li>Origine delle merci</li>
+            <li>Intrastat</li><li>Contabilità</li><li>Offerte e ordini</li>
+        </ul>
+
+        <p class="etichetta">Soft skills</p>
+        <ul class="tag">
+            <li>Comunicazione</li><li>Precisione</li><li>Metodo</li><li>Curiosità</li>
+            <li>Flessibilità</li><li>Insegnamento</li><li>Collaborazione</li><li>Determinazione</li><li>Leadership</li>
+        </ul>
+
+        <p class="etichetta">Fotografia</p>
+        <ul class="tag">
+            <li>Adobe Photoshop</li><li>Adobe Lightroom</li><li>Adobe Illustrator</li>
+        </ul>
+    </fieldset>
+
+    <fieldset>
+    <legend>Contatti</legend>
+    <!--  <p>Per contattarmi potete scrivermi una mail a: <a href="mailto:stefaniamilani1990@gmail.com"> stefaniamilani1990@gmail.com </a></p> -->
+    <p>
+        <a class="pillola" href="https://www.linkedin.com/in/1-stefaniamilani/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="pillola" href="https://github.com/StefMila" target="_blank" rel="noopener">GitHub</a>
+    </p>
+</fieldset>
+
+     <fieldset>
+        <legend>Corsi universitari</legend>
+        <ul class="tag">
+            <li> Analisi 1 e 2</li>
+            <li> Fisica 1 e 2</li>
+            <li> Algebra lineare e geometria</li>
+            <li> Fondamenti di informatica</li>
+            <li> Fondamenti di programmazione</li>
+            <li> Fondamenti di sistemi operativi</li>
+            <li> Fondamenti di elettronica</li>
+            <li> Fondamenti di basi di dati</li>
+            <li> Fondamenti di reti</li>
+            <li> Ingegneria del software</li>
+            <li> Intelligenza artificiale</li>
+            <li> Machine learning</li>
+            <li> Introduzione alla sicurezza informatica</li>
+            <li> IoT internet of things</li>
+        </ul>
+    </fieldset>
+
+     <fieldset>
+        <legend>Corsi</legend>
+        <ul class="corsi">
+            <li><span>11/2022</span> Comunicazione persuasiva ed efficace, team building</li>
+            <li><span>05/2022</span> Inglese, Kaplan International, New York</li>
+            <li><span>03/2019</span> Come prepararsi alla Brexit</li>
+            <li><span>02/2019</span> Fatturazione elettronica e novità IVA</li>
+            <li><span>03/2018</span> Estero, IVA e triangolazioni</li>
+            <li><span>2009</span> ECDL e Zertifikat Deutsch B2</li>
+        </ul>
+    </fieldset>
+
+
+</div>
+    </section>
+    <!-- per il calcolo dell'età -->
+    <script>
+        const nascita = new Date("1990-04-10");
+        const oggi = new Date();
+
+        let eta = oggi.getFullYear() - nascita.getFullYear();
+
+        const compleannoPassato =
+            oggi.getMonth() > nascita.getMonth() ||
+            (oggi.getMonth() === nascita.getMonth() && oggi.getDate() >= nascita.getDate());
+
+        if (!compleannoPassato) {
+            eta = eta - 1;
+        }
+
+        document.getElementById("eta").textContent = eta;
+    </script>
+</body>
+
+</html>

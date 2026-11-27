@@ -1,0 +1,164 @@
+/* ===== Variabili ===== */
+/* registrate come colori così anche loro sfumano quando cambia il tema */
+@property --tenue { syntax: "<color>"; inherits: true; initial-value: #666; }
+@property --linea { syntax: "<color>"; inherits: true; initial-value: #d6d6d3; }
+
+:root {
+  --chiaro: #f2f2f0;
+  --scuro: #0a0a0a;
+  --rosso: #c8102e;
+  --titoli: "Space Grotesk", sans-serif;
+  --mono: "JetBrains Mono", monospace;
+}
+
+/* ===== Base ===== */
+body { margin: 0; font-family: Arial, sans-serif; line-height: 1.45; }
+a { color: inherit; }
+
+/* Il tema sta sulla pagina intera e sfuma quando tema.js cambia data-theme su <html>.
+   --tenue è il grigio del testo secondario, --linea quello dei separatori. */
+html {
+  background: var(--chiaro); color: var(--scuro);
+  --tenue: #666; --linea: #d6d6d3;
+  transition: background-color .6s ease, color .6s ease, --tenue .6s ease, --linea .6s ease;
+}
+html[data-theme="dark"] {
+  background: var(--scuro); color: var(--chiaro);
+  --tenue: #a3a3a3; --linea: #2c2c2c;
+}
+
+/* sezioni trasparenti, tutte larghe al massimo 1100px */
+section { padding: 80px max(20px, calc((100% - 1100px) / 2)); }
+
+/* ===== Testi ===== */
+h1, h2, h3 { font-family: var(--titoli); font-weight: 700; line-height: 1; }
+h1 { font-size: clamp(56px, 10vw, 112px); letter-spacing: -0.03em; margin: 0 0 32px; }
+h2 { font-size: clamp(48px, 8vw, 88px);  letter-spacing: -0.03em; margin: 0 0 32px; }
+h3 { font-size: clamp(24px, 3vw, 32px);  letter-spacing: -0.02em; margin: 4px 0 8px; }
+
+.intro { font-size: 24px; }
+.tenue { color: var(--tenue); }
+.etichetta {
+  font: 13px var(--mono); text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--tenue); margin: 0;
+}
+
+/* Bottoni a pillola: tendine e link dei contatti */
+summary, .pillola {
+  display: inline-block; padding: 10px 22px; cursor: pointer;
+  border: 1px solid currentColor; border-radius: 40px; text-decoration: none;
+}
+summary:hover, .pillola:hover { background: var(--rosso); border-color: var(--rosso); color: var(--chiaro); }
+details + details { margin-top: 12px; }
+details > ul { color: var(--tenue); margin: 16px 0; padding-left: 20px; }
+
+/* ===== Intestazione ===== */
+/* testo a sinistra, foto a destra */
+.intestazione { display: grid; grid-template-columns: 1fr minmax(220px, 380px); gap: 64px; align-items: center; }
+.foto { display: block; width: 100%; height: auto; border-radius: 8px; }
+.contorno {
+  display: block; width: fit-content; color: transparent;
+  -webkit-text-stroke: 1px var(--chiaro);
+  background: linear-gradient(100deg, transparent 35%, #888 50%, transparent 65%) no-repeat;
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  animation: riflesso 4s ease-in-out infinite;
+}
+@keyframes riflesso {
+  0%        { background-position: 100% 0; }
+  60%, 100% { background-position: 0 0; }
+}
+
+/* ===== Elenchi (passioni, estero...) ===== */
+.elenco { list-style: none; margin: 0; padding: 0; }
+.elenco > li { padding: 14px 0; border-bottom: 1px solid var(--linea); }
+.elenco > li:first-child { border-top: 1px solid var(--linea); }
+
+/* barre di livello (<meter>): rosse su binario grigio */
+meter::-webkit-meter-bar { background: var(--linea); border: 0; border-radius: 5px; }
+meter::-webkit-meter-optimum-value { background: var(--rosso); border-radius: 5px; }
+meter::-moz-meter-bar { background: var(--rosso); }
+
+/* ===== Chi sono con filo rosso ===== */
+#chi-sono { display: flow-root; } /* contiene il ritratto flottante */
+
+/* Paragrafi della storia: grigi e allineati al testo sopra (nessun rientro).
+   flow-root fa sì che ogni paragrafo si restringa accanto al ritratto invece di passarci sotto,
+   e prenda tutta la larghezza quando il ritratto è finito.
+   Bordo e sfondo dell'evidenziazione stanno nel ::before, che sporge di 15px a sinistra. */
+#storia p {
+  display: flow-root; position: relative; z-index: 0;
+  color: var(--tenue); padding: 4px 0; transition: color .3s;
+}
+#storia p::before {
+  content: ""; position: absolute; inset: 0 0 0 -15px; z-index: -1;
+  border-left: 3px solid transparent; transition: border-color .3s, background-color .3s;
+}
+#storia p.acceso { color: var(--scuro); }
+#storia p.acceso::before { border-left-color: var(--rosso); background: rgba(200, 16, 46, .1); }
+
+.filo { float: right; width: 48%; max-width: 560px; margin: 0 0 24px 40px; padding: 16px 0; }
+.ritratto { position: relative; width: 66%; margin: 0 auto; }
+
+/* l'immagine resta la stessa: il bianco sparisce e la linea si tinge */
+.disegno { position: relative; isolation: isolate; mix-blend-mode: multiply; }
+.disegno img { display: block; width: 100%; height: auto; filter: brightness(1.1) contrast(1.5); }
+.disegno::after { content: ""; position: absolute; inset: 6px; background: var(--rosso); mix-blend-mode: screen; }
+
+.filo button {
+  position: absolute; width: 14px; height: 14px; transform: translate(-50%, -50%);
+  padding: 0; border: 2px solid var(--rosso); border-radius: 50%; background: var(--chiaro);
+  color: inherit; font: 13px/1.25 var(--mono); cursor: pointer;
+}
+.filo button span { position: absolute; width: max-content; max-width: 130px; }
+.filo button.a-destra span   { left: 18px;  top: 50%; transform: translateY(-50%); text-align: left; }
+.filo button.a-sinistra span { right: 18px; top: 50%; transform: translateY(-50%); text-align: right; }
+.filo button.sopra span { bottom: 18px; left: 50%; transform: translateX(-50%); }
+.filo button.sotto span { top: 18px;    left: 50%; transform: translateX(-50%); }
+.filo button:hover, .filo button.acceso { background: var(--rosso); }
+.filo button.acceso { font-weight: bold; }
+
+/* animazione: il disegno si scopre e i pallini compaiono */
+.filo.animato .disegno img, .filo.animato .disegno::after { transition: clip-path 2.5s ease-in-out; clip-path: inset(0 0 100% 0); }
+.filo.animato.visibile .disegno img, .filo.animato.visibile .disegno::after { clip-path: inset(4px); }
+.filo.animato button { opacity: 0; transition: opacity .4s var(--ritardo); }
+.filo.animato.visibile button { opacity: 1; }
+
+/* ===== Schermi piccoli ===== */
+@media (max-width: 800px) {
+  section { padding-top: 56px; padding-bottom: 56px; }
+  .intro { font-size: 20px; }
+
+  /* foto sotto il testo */
+  .intestazione { grid-template-columns: 1fr; gap: 32px; }
+  .foto { max-width: 280px; }
+
+  /* niente float: testo sopra, ritratto sotto */
+  #chi-sono { display: flex; flex-direction: column; }
+  .filo { float: none; width: 100%; margin: 32px auto 0; order: 2; }
+  .ritratto { width: 58%; }
+  .filo button { font-size: 11px; }
+  .filo button span { max-width: 100px; }
+  .filo button.a-sinistra span { max-width: 78px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { transition: none; }
+  .contorno { animation: none; }
+  .filo.animato .disegno img, .filo.animato .disegno::after, .filo.animato button { transition: none; }
+}
+
+/* per skill ed esami dati nei contatti */
+
+.riquadri { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0; }
+.riquadri fieldset { min-width: 0; border: 1px solid var(--linea); border-radius: 12px; padding: 16px 24px 24px; }
+.riquadri legend { font: 14px var(--mono); text-transform: uppercase; color: var(--rosso); padding: 0 8px; }
+
+.corsi, .tag { list-style: none; margin: 0; padding: 0; }
+.corsi li { margin-bottom: 14px; }
+.corsi span { display: block; font: 13px var(--mono); color: var(--tenue); }
+
+.tag { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 20px; }
+.tag li { border: 1px solid var(--linea); border-radius: 40px; padding: 4px 14px; font: 13px var(--mono); }
+.tag li:hover { border-color: var(--rosso); }
+
+@media (max-width: 800px) { .riquadri { grid-template-columns: 1fr; } }

@@ -1,0 +1,56 @@
+/* ===== Timeline delle esperienze ===== */
+.legenda { display: flex; justify-content: center; gap: 24px; margin: 0 0 40px; font: 13px var(--mono); text-transform: uppercase; }
+.legenda span::before { content: ""; display: inline-block; width: 14px; height: 14px; margin-right: 8px; border-radius: 3px; vertical-align: -2px; }
+.legenda .lavoro::before { background: var(--chiaro); }
+.legenda .studio::before { background: var(--rosso); }
+
+/* linea centrale e pallini alle estremità.
+   Il binario grigio è lo sfondo della lista; la linea rossa (::before) si allunga con lo scroll:
+   percorso.js imposta --fill da 0 a 1 e aggiunge .in-corso finché la linea non è arrivata in fondo.
+   Senza JavaScript la linea resta piena. */
+.timeline {
+  position: relative; padding: 24px 0;
+  background: linear-gradient(var(--linea), var(--linea)) 50% 0 / 2px 100% no-repeat;
+  --punto-fine: var(--rosso);
+}
+.timeline.in-corso { --punto-fine: var(--linea); }
+.timeline::before {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; margin-left: -1px; background: var(--rosso);
+  transform-origin: top; transform: scaleY(var(--fill, 1));
+}
+.timeline::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 16px; margin-left: -8px; pointer-events: none;
+  background: radial-gradient(circle, var(--rosso) 7px, transparent 8px) top / 16px 16px no-repeat,
+              radial-gradient(circle, var(--punto-fine) 7px, transparent 8px) bottom / 16px 16px no-repeat;
+}
+
+/* voci dispari a sinistra, pari a destra */
+.elenco.timeline > li { position: relative; box-sizing: border-box; width: 50%; padding: 0 92px 40px 0; border: 0; text-align: right; }
+.elenco.timeline > li:nth-child(even) { margin-left: 50%; padding: 0 0 40px 92px; text-align: left; }
+
+/* trattino che collega la voce alla linea */
+.timeline > li::after { content: ""; position: absolute; top: 25px; right: 0; width: 24px; height: 2px; background: var(--rosso); }
+.timeline > li:nth-child(even)::after { right: auto; left: 0; }
+
+/* riquadro con l'icona */
+.timeline > li::before { content: ""; position: absolute; top: 0; right: 24px; width: 52px; height: 52px; border-radius: 10px; }
+.timeline > li:nth-child(even)::before { right: auto; left: 24px; }
+.timeline > li.lavoro::before { background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27%230a0a0a%27%3E%3Cpath%20d%3D%27M9%203h6a2%202%200%200%201%202%202v2h3a2%202%200%200%201%202%202v10a2%202%200%200%201-2%202H4a2%202%200%200%201-2-2V9a2%202%200%200%201%202-2h3V5a2%202%200%200%201%202-2zm0%202v2h6V5z%27/%3E%3C/svg%3E") center / 30px no-repeat, var(--chiaro); }
+.timeline > li.studio::before { background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27%23f2f2f0%27%3E%3Cpath%20d%3D%27M12%204%201%209l11%205%209-4v6h2V9zM5%2013v4c2%203%2012%203%2014%200v-4l-7%203z%27/%3E%3C/svg%3E") center / 30px no-repeat, var(--rosso); }
+
+/* testi */
+.timeline .etichetta { font: 700 28px/1.1 var(--titoli); color: var(--rosso); letter-spacing: 0; }
+.timeline h3 { font-size: 20px; line-height: 1.2; }
+.timeline details { margin-top: 10px; }
+.timeline summary { font-size: 14px; padding: 8px 16px; border-radius: 18px; }
+.timeline details ul { text-align: left; font-size: 14px; }
+
+/* sul telefono: linea a sinistra e tutte le voci a destra */
+@media (max-width: 800px) {
+  .timeline::before, .timeline::after { left: 8px; }
+  .timeline { background-position: 7px 0; }
+  .elenco.timeline > li, .elenco.timeline > li:nth-child(even) { width: auto; margin-left: 8px; padding: 0 0 36px 76px; text-align: left; }
+  .timeline > li::after, .timeline > li:nth-child(even)::after { left: 0; right: auto; width: 16px; }
+  .timeline > li::before, .timeline > li:nth-child(even)::before { left: 16px; right: auto; width: 44px; height: 44px; }
+  .timeline > li::after { top: 21px; }
+}

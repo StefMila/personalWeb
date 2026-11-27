@@ -1,0 +1,24 @@
+/* ===== Menu fisso ===== */
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 64px; }
+
+.menu {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px max(12px, calc((100% - 1100px) / 2));
+  border-bottom: 1px solid transparent;
+  transition: background-color .4s, border-color .4s;
+}
+/* quando si scorre: sfondo semitrasparente e sfocato */
+.menu.scorso { background: rgba(242, 242, 240, .72); border-color: var(--linea); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+html[data-theme="dark"] .menu.scorso { background: rgba(10, 10, 10, .65); }
+
+.voci { display: flex; gap: 4px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+.voci a { padding: 8px 16px; border-radius: 40px; text-decoration: none; font: 15px var(--titoli); color: var(--tenue); }
+.voci a:hover { color: inherit; }
+.voci a.attiva { color: inherit; background: rgba(128, 128, 128, .18); }
+
+.lingue { display: flex; flex: none; padding: 3px; border: 1px solid var(--linea); border-radius: 40px; font: 13px var(--mono); }
+.lingue span { padding: 5px 12px; border-radius: 40px; color: var(--tenue); }
+.lingue .scelta { background: var(--scuro); color: var(--chiaro); }
+html[data-theme="dark"] .lingue .scelta { background: var(--chiaro); color: var(--scuro); }

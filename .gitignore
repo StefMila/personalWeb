@@ -1,0 +1,5 @@
+node_modules/
+.vercel/
+.env*
+# il CV non va mai in git: vedi README
+privato/*.pdf

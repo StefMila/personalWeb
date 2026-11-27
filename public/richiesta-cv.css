@@ -1,0 +1,18 @@
+/* ===== Modulo di richiesta del CV ===== */
+.richiesta-cv form { display: grid; gap: 16px; max-width: 520px; margin-top: 24px; }
+.richiesta-cv form > p { margin: 0; }
+.richiesta-cv label { display: grid; gap: 6px; font: 13px var(--mono); text-transform: uppercase; letter-spacing: 0.08em; }
+.richiesta-cv label .tenue { text-transform: none; letter-spacing: 0; }
+.richiesta-cv input, .richiesta-cv textarea {
+  font: 16px Arial, sans-serif; color: inherit; background: transparent;
+  padding: 10px 14px; border: 1px solid var(--linea); border-radius: 8px;
+}
+.richiesta-cv input:focus, .richiesta-cv textarea:focus { outline: none; border-color: var(--rosso); }
+.richiesta-cv textarea { resize: vertical; }
+.richiesta-cv button { justify-self: start; font: inherit; background: none; color: inherit; }
+.richiesta-cv button:disabled { opacity: .5; cursor: wait; }
+.richiesta-cv .esito:empty { display: none; }
+.richiesta-cv .esito.errore { color: var(--rosso); }
+
+/* campo trappola: fuori dallo schermo per le persone, ma presente per i bot */
+.richiesta-cv .trappola { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
